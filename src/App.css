@@ -1,38 +1,206 @@
-.App {
-  text-align: center;
+:root {
+  --sidebar-width: 400px;
+  --left-side-width: 280px;
+  --orange: #ff6b08;
+  --navy: #1e2939;
+  --navy-light: #2b3a52;
+  --dark-light: #828282;
+  --dark: #070e18;
+  --white: rgb(230, 230, 230);
+  --white-transparent: rgba(230, 230, 230, 0.7);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
+body {
+  font-family: 'Nunito', sans-serif;
+  background-color: var(--orange);
 
-.App-header {
-  background-color: #282c34;
   min-height: 100vh;
   display: flex;
+}
+
+/* scrollbar styles */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--navy-light);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--dark);
+}
+/* sidebar styles */
+.sidebar {
+  position: fixed;
+  overflow-y: scroll;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  min-height: 100vh;
+  height: auto;
+  padding: 20px;
+  background-color: var(--navy);
+  color: var(--white);
+  width: var(--sidebar-width);
+  display: flex;
   flex-direction: column;
-  align-items: center;
+}
+
+.form {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+}
+.form-section {
+  background-color: var(--navy-light);
+  margin-bottom: 40px;
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+}
+input[type='text'],
+input[type='tel'],
+input[type='email'],
+input[type='date'] {
+  width: 100%;
+  margin-bottom: 20px;
+}
+input[type='file'] {
+  background-color: var(--orange);
+}
+textarea {
+  resize: none;
+  font-family: 'Nunito', sans-serif;
+}
+label {
+  width: 140px;
+  margin-bottom: 8px;
+}
+.number {
+  background-color: var(--orange);
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+/* cv container styles */
+.cv-container {
+  position: absolute;
+  top: 0;
+  left: var(--sidebar-width);
+  width: calc(100% - var(--sidebar-width));
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 80px 0;
 }
 
-.App-link {
-  color: #61dafb;
+.cv {
+  width: 210mm;
+  height: 297mm;
+  background-color: white;
+  display: flex;
+  overflow: hidden;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* left columnn cv styles */
+.left {
+  height: 100%;
+  width: var(--left-side-width);
+  background-color: var(--navy);
+  color: var(--white);
+}
+.img-container {
+  width: var(--left-side-width);
+  height: var(--left-side-width);
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+.contact-container,
+.tech-skills-container,
+.soft-skills-container {
+  padding: 60px 40px;
+}
+
+.contact-link {
+  color: var(--white-transparent);
+  text-decoration: none;
+}
+
+li::marker {
+  color: var(--orange);
+}
+
+/* right columns cv styles */
+.right {
+  padding: 40px;
+  color: var(--dark);
+}
+
+.personal-container {
+  margin-bottom: 60px;
+}
+
+.name {
+  font-size: 44px;
+}
+
+.personal-title {
+  color: var(--orange);
+  margin: 20px 0;
+}
+
+.projects-container {
+  margin-bottom: 60px;
+}
+
+.employment-container {
+  margin-bottom: 60px;
+}
+
+.job-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 40px;
+}
+
+.school-container {
+  margin-bottom: 20px;
+}
+
+/* universal styles  */
+.span {
+  color: var(--orange);
+}
+
+.title {
+  margin-bottom: 20px;
+}
+.time {
+  margin: 10px 0;
+  color: var(--dark-light);
+}
+
+.btn {
+  font-family: 'Nunito', sans-serif;
+  font-size: 16px;
+  color: var(--white);
+  font-weight: bold;
+  background-color: var(--orange);
+  padding: 4px 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.05s ease;
+}
+
+.btn:active {
+  transform: scale(0.95);
 }
