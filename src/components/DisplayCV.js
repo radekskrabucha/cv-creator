@@ -3,39 +3,31 @@ import uuid from 'react-uuid'
 import Moment from 'react-moment';
 import ProfilePic from '../profile.jpeg.jpg'
 
-export default function displayCV({data}) {
+export default function displayCV({data, person}) {
    const {
       firstName, 
-      lastName, 
+      lastName,
       jobTitle, 
       personalProfile, 
-      telNumber, 
+      tel, 
       email,
+      profileImage,
       techSkills,
       softSkills,
-      projectsNames,
-      projectsUrls,
-      jobsPositions,
-      companiesNames,
-      jobsDescriptions,
-      jobsStartDates,
-      jobsEndDates,
-      fieldsOfStudies,
-      universities,
-      universitiesStartDates,
-      universitiesEndDates,
-      profilePicture,
-   } = data;
+      projects,
+      jobs,
+      education,
+   } = person
 
    return (
       <div className="cv">
          <div className="left">
-         <div className="img-container" style={{backgroundImage: `url(${profilePicture ? profilePicture : ProfilePic})`}} />
+         <div className="img-container" style={{backgroundImage: `url(${profileImage ? profileImage : ProfilePic})`}} />
          <div className="contact-container">
             <h2>Contact</h2>
             <p>Phone:
-               <a className="contact-link" href={`tel:${telNumber}`}>
-                  <span> {telNumber}</span>
+               <a className="contact-link" href={`tel:${tel}`}>
+                  <span> {tel}</span>
                </a>
             </p>
             <p>Email:
@@ -48,15 +40,15 @@ export default function displayCV({data}) {
             <h2>Tech skills</h2>
             <ul>
                {techSkills.map((skill) => {
-                  return <li key={uuid()}>{skill}</li>
+                  return <li key={uuid()}>{skill.name}</li>
                })}
             </ul>
          </div>
          <div className="soft-skills-container">
          <h2>Soft skills</h2>
             <ul>
-            {softSkills.map((skill) => {
-                  return <li key={uuid()}>{skill}</li>
+               {softSkills.map((skill) => {
+                  return <li key={uuid()}>{skill.name}</li>
                })}
             </ul>
          </div>
@@ -71,23 +63,25 @@ export default function displayCV({data}) {
             <div className="projects-container">
                <h2 className="title">Projects</h2>
                <ul>
-                  {projectsNames.map((name, index) => {
+                  {projects.map((project) => {
+                     const {id, name, url} = project
                      return (
-                        <li key={uuid()}><a href={projectsUrls[index]} target="_blank" rel="noreferrer">{name}</a></li>
+                        <li key={id}><a href={url} target="_blank" rel="noreferrer">{name}</a></li>
                      )
                   })}
                </ul>
             </div>
             <div className="employment-container">
                <h2 className="title">Employment history</h2>
-               {jobsPositions.map((position, index) => {
+               {jobs.map((job) => {
+                  const {position, company, description, start, end, id} = job
                   return (
-                     <div key={uuid()} className="job-container">
-                        <h3>{position} at <span className="span">{companiesNames[index]}</span></h3>
+                     <div key={id} className="job-container">
+                        <h3>{position} at <span className="span">{company}</span></h3>
                         <p className="time">
-                           <Moment date={jobsStartDates[index]} format="MMMM YYYY" /> to <Moment date={jobsEndDates[index]} format="MMMM YYYY" />
+                           <Moment date={start} format="MMMM YYYY" /> to <Moment date={end} format="MMMM YYYY" />
                         </p>
-                        <p>{jobsDescriptions[index]}</p>
+                        <p>{description}</p>
                      </div>
                   )
                })}
@@ -95,12 +89,13 @@ export default function displayCV({data}) {
 
             <div className="education-container">
                <h2 className="title">Education container</h2>
-               {fieldsOfStudies.map((field, index) => {
+               {education.map((university) => {
+                  const {company, position, start, end, id} = university
                   return (
-                     <div key={uuid()} className="school-container">
-                        <h3>{field}, <span className="span">{universities[index]}</span></h3>
+                     <div key={id} className="school-container">
+                        <h3>{position}, <span className="span">{company}</span></h3>
                         <p className="time">
-                           <Moment date={universitiesStartDates[index]} format="MMMM YYYY" /> to <Moment date={universitiesEndDates[index]} format="MMMM YYYY" />
+                           <Moment date={start} format="MMMM YYYY" /> to <Moment date={end} format="MMMM YYYY" />
                         </p>
                      </div>
                   )
