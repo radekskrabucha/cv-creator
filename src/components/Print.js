@@ -17,8 +17,8 @@ const Print = ({person}) => {
    return (
       <div>
          <div className="cv-container">
-            <DisplayCVClass person={person} ref={componentRef}/>
             <button className='print-btn' onClick={handlePrint}>Save to PDF</button>
+            <DisplayCVClass person={person} ref={componentRef}/>
          </div>
       </div>
    );
