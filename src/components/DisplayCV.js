@@ -1,25 +1,26 @@
-import React from 'react'
+import React, { Component } from 'react'
 import uuid from 'react-uuid'
 import Moment from 'react-moment';
 import ProfilePic from '../profile.jpeg.jpg'
 
-export default function displayCV({data, person}) {
-   const {
-      firstName, 
-      lastName,
-      jobTitle, 
-      personalProfile, 
-      tel, 
-      email,
-      profileImage,
-      techSkills,
-      softSkills,
-      projects,
-      jobs,
-      education,
-   } = person
-
-   return (
+export default class DisplayCV extends Component {
+   
+   render() {
+      const {
+         firstName, 
+         lastName,
+         jobTitle, 
+         personalProfile, 
+         tel, 
+         email,
+         profileImage,
+         techSkills,
+         softSkills,
+         projects,
+         jobs,
+         education,
+      } = this.props.person
+      return (
       <div className="cv">
          <div className="left">
          <div className="img-container" style={{backgroundImage: `url(${profileImage ? profileImage : ProfilePic})`}} />
@@ -88,7 +89,7 @@ export default function displayCV({data, person}) {
             </div>
 
             <div className="education-container">
-               <h2 className="title">Education container</h2>
+               <h2 className="title">Education</h2>
                {education.map((university) => {
                   const {company, position, start, end, id} = university
                   return (
@@ -104,4 +105,5 @@ export default function displayCV({data, person}) {
          </div>
       </div>
    )
+   }
 }

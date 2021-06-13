@@ -2,19 +2,34 @@ import React, { useState } from 'react'
 import uuid from 'react-uuid'
 import './App.css';
 
-import DisplayCV from './components/DisplayCV';
+import Print from './components/Print';
 import Input from './components/Input'
 import MultipleInput from './components/MultipleInput'
 
 function App() {
   const initialState = {
-      firstName: 'Radek',
-      techSkills: [],
-      softSkills: [],
+      firstName: 'John',
+      lastName: 'Doe',
+      jobTitle: 'Frontend developer',
+      personalProfile: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam voluptatem ab, eligendi exercitationem accusamus ratione?',
+      tel: '123456789',
+      email: 'john.doe@example.com',
+      techSkills: [
+        {
+          id: uuid(),
+          name: 'Example'
+        }
+      ],
+      softSkills: [
+        {
+          id: uuid(),
+          name: 'Example'
+        }
+      ],
       projects: [
         {
-          name: 'Shopping cart',
-          url: 'https://radek1313.github.io/shopping-cart/',
+          name: 'Netlfix',
+          url: 'https://www.netflix.com',
           id: uuid(),
         },
       ],
@@ -30,10 +45,10 @@ function App() {
       ],
       education: [
         {
-          company: 'Politechnika Lubelska',
-          position: 'Marketing',
-          start: '2012-11-12',
-          end: '2019-07-23',
+          company: 'Massachusetts Institute of Technology',
+          position: 'Computer science',
+          start: '2014-10-01',
+          end: '2019-07-01',
           id: uuid(),
         }
       ]
@@ -98,7 +113,7 @@ function App() {
   }
 
   return (
-    <div>
+    <main>
       <div className="sidebar">
         <h1>Create developer's CV!</h1>
         <p>Add your information below</p>
@@ -132,41 +147,42 @@ function App() {
           <div className="form-section">
             <MultipleInput removeItem={removeItem} property='projects' list={person.projects} handleSubmit={handleProjectsSubmit} id='projectName' label='Project name' btnText='Add project' >
               <label htmlFor='projectUrl'>Project url</label>
-              <input type='text' name='projectUrl' id='projectUrl' />
+              <input required type='text' name='projectUrl' id='projectUrl' />
             </MultipleInput>
           </div>
 
           <div className="form-section">
             <MultipleInput removeItem={removeItem} property='jobs' list={person.jobs} handleSubmit={handleJobSubmit} id='jobPosition' label='Position' btnText='Add job' >
               <label htmlFor='company'>Company</label>
-              <input type='text' name='company' id='company' />
+              <input required type='text' name='company' id='company' />
               <label htmlFor='jobDesc'>Description</label>
-              <textarea rows="6" name="jobDesc" id="jobDesc"/>
+              <textarea required rows="6" name="jobDesc" id="jobDesc"/>
               <label htmlFor='startDate'>Start date</label>
-              <input type='date' name='startDate' id='startDate' />
+              <input required type='date' name='startDate' id='startDate' />
               <label htmlFor='endDate'>End date</label>
-              <input type='date' name='endDate' id='endDate' />
+              <input required type='date' name='endDate' id='endDate' />
             </MultipleInput>
           </div>
 
           <div className="form-section">
             <MultipleInput removeItem={removeItem} property='education' list={person.education} handleSubmit={handleEducationSubmit} id='fieldOfStudies' label='Field of studies' btnText='Add university' >
               <label htmlFor='university'>University</label>
-              <input type='text' name='university' id='university' />
+              <input required type='text' name='university' id='university' />
               <label htmlFor='startDate'>Start date</label>
-              <input type='date' name='startDate' id='startDate' />
+              <input required type='date' name='startDate' id='startDate' />
               <label htmlFor='endDate'>End date</label>
-              <input type='date' name='endDate' id='endDate' />
+              <input required type='date' name='endDate' id='endDate' />
             </MultipleInput>
           </div>
         </div>
       </div>
 
-      <div className="cv-container">
+      {/* <div className="cv-container">
         <DisplayCV person={person} />
-      </div>
+      </div> */}
+      <Print person={person} />
 
-    </div>
+    </main>
   )
 }
 

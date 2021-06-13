@@ -1,2 +1,20 @@
-Hello, this is react-app to create developer's CV.
-It's based on two components: 1st one handles user's input and state, and the other one displays user's information. This repository is using react-uuid and react-moment npm modules.
+# CV creator
+
+[Live Demo](https://radek1313.github.io/cv-creator/) :point_left:
+
+## Getting started
+
+```
+git clone https://github.com/radek1313/cv-creator.git
+cd cv-creator
+npm install
+npm start
+```
+
+## Built with
+
+- [React](https://reactjs.org/)
+- [React-icons](https://react-icons.github.io/react-icons/)
+- [React-moment](https://www.npmjs.com/package/react-moment)
+- [React-to-print](https://www.npmjs.com/package/react-to-print)
+- [React-uuid](https://www.npmjs.com/package/react-uuid)

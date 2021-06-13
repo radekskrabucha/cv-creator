@@ -2,6 +2,7 @@
   --sidebar-width: 400px;
   --left-side-width: 280px;
   --orange: #ff6b08;
+  --orange-light: #fd812e;
   --navy: #1e2939;
   --navy-light: #2b3a52;
   --dark-light: #828282;
@@ -76,8 +77,12 @@ input[type='date'] {
 input[type='file'] {
   background-color: var(--orange);
 }
+input[type='file']:hover {
+  background-color: var(--orange-light);
+}
 textarea {
   resize: none;
+  width: 100%;
   font-family: 'Nunito', sans-serif;
 }
 label {
@@ -89,6 +94,16 @@ label {
   padding: 2px 4px;
   border-radius: 4px;
 }
+.list-item {
+  display: flex;
+  justify-content: space-between;
+  margin: 12px 0;
+}
+.remove-btn {
+  cursor: pointer;
+  border: none;
+  background: transparent;
+}
 
 /* cv container styles */
 .cv-container {
@@ -97,13 +112,15 @@ label {
   left: var(--sidebar-width);
   width: calc(100% - var(--sidebar-width));
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
   padding: 80px 0;
 }
 
 .cv {
   width: 210mm;
-  height: 297mm;
+  height: 296.9mm;
   background-color: white;
   display: flex;
   overflow: hidden;
@@ -200,7 +217,28 @@ li::marker {
   cursor: pointer;
   transition: all 0.05s ease;
 }
-
+.btn:hover {
+  background-color: var(--orange-light);
+}
 .btn:active {
+  transform: scale(0.95);
+}
+
+.print-btn {
+  margin-top: 20px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 16px;
+  color: var(--white);
+  font-weight: bold;
+  background-color: var(--navy);
+  padding: 4px 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.05s ease;
+}
+.print-btn:hover {
+  background-color: var(--navy-light);
+}
+.print-btn:active {
   transform: scale(0.95);
 }

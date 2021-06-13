@@ -1,5 +1,4 @@
 import React from 'react'
-import uuid from 'react-uuid'
 
 
 const MultipleInput = ({handleSubmit, id, label, btnText, type, list, removeItem, property, children}) => {
@@ -7,16 +6,20 @@ const MultipleInput = ({handleSubmit, id, label, btnText, type, list, removeItem
       <>
          <form onSubmit={handleSubmit}>
             <label htmlFor={id}>{label}</label>
-            <input type={type ? type : 'text'} name={id} id={id} />
+            <input required type={type ? type : 'text'} name={id} id={id} />
             {children}
             <button className='btn' type="submit">{btnText}</button>
          </form>
          {list.map((item) => {
             const {id: itemID, name, position, company } = item
             return (
-               <ul key={uuid()}>
-               <li>{name ? name : `${position} at ${company}` }</li>
-               <button type='button' onClick={() => removeItem(itemID, property?property:id)}>remove item</button>
+               <ul key={itemID}>
+               <li className='list-item'>
+                  {name ? name : `${position} at ${company}` }
+                  <button className='remove-btn' type='button' onClick={() => removeItem(itemID, property?property:id)}>
+                     <svg fill="#ff6b08" viewBox="0 0 1024 1024" height="16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M292.7 840h438.6l24.2-512h-487z"></path><path d="M864 256H736v-80c0-35.3-28.7-64-64-64H352c-35.3 0-64 28.7-64 64v80H160c-17.7 0-32 14.3-32 32v32c0 4.4 3.6 8 8 8h60.4l24.7 523c1.6 34.1 29.8 61 63.9 61h454c34.2 0 62.3-26.8 63.9-61l24.7-523H888c4.4 0 8-3.6 8-8v-32c0-17.7-14.3-32-32-32zm-504-72h304v72H360v-72zm371.3 656H292.7l-24.2-512h487l-24.2 512z"></path></svg>
+                  </button>
+               </li>
                </ul>
             )
          })}
