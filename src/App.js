@@ -176,10 +176,6 @@ function App() {
           </div>
         </div>
       </div>
-
-      {/* <div className="cv-container">
-        <DisplayCV person={person} />
-      </div> */}
       <Print person={person} />
 
     </main>
