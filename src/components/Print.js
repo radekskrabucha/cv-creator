@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { useReactToPrint } from 'react-to-print';
 
-import DisplayCVClass from './DisplayCV';
+import DisplayCV from './DisplayCV';
 function capitalize(string) {
    const lowerCase = string.toLowerCase();
    return lowerCase.charAt(0).toUpperCase() + lowerCase.slice(1);
@@ -18,7 +18,7 @@ const Print = ({person}) => {
       <div>
          <div className="cv-container">
             <button className='print-btn' onClick={handlePrint}>Save to PDF</button>
-            <DisplayCVClass person={person} ref={componentRef}/>
+            <DisplayCV person={person} ref={componentRef}/>
          </div>
       </div>
    );

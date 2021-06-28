@@ -162,6 +162,9 @@ li::marker {
 .right {
   padding: 40px;
   color: var(--dark);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .personal-container {
