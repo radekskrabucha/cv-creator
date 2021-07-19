@@ -1,6 +1,7 @@
 # CV creator
 
 [Live Demo](https://radek1313.github.io/cv-creator/) :point_left:
+
 CV creator is a React App where you can generate developer's CV and save it to PDF.
 
 ## Getting started
